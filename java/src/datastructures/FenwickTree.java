@@ -9,15 +9,12 @@ package datastructures;
  *
  * Supported operations:
  *      void update(int inx, int delta) - Adds delta the frequency at index inx. O(log(MAX_SIZE)).
- *      int sumLeftTail(int inx) - Returns the sum of all frequencies with with indices in [1, inx]. O(log(MAX_SIZE)).
- *      int sumRightTail(int inx) - Returns the sum of all frequencies with with indices in [inx, MAX_SIZE).
- *                                  Runs in O(log(MAX_SIZE)).
- *      int readSingle(int inx) - Efficiently returns the frequency stored at index inx. This is roughly 2x faster than
- *                                computing sumLeftTail(inx) - sumLeftTail(inx - 1).
+ *      int leftSum(int inx) - Returns the sum of all frequencies with with indices in [1, inx]. O(log(MAX_SIZE)).
+ *      int getSingle(int inx) - Efficiently returns the frequency stored at index inx. This is roughly 2x faster than
+ *                               computing leftSum(inx) - leftSum(inx - 1).
  *      int getTotalSum() - Returns the summation of all frequencies (0, MAX_SIZE). This is useful when trying to
- *                          determine the sum of certain ranges, e.g. [1, inx) which is equal to
- *                          TotalSum - sumOfRightTail(inx). O(1)
- *      void scale(double c) - Scale all frequencies by the specified multiplier. Beware of integer division here.
+ *                          determine the right sum, e.g. (inx, MAX_SIZE), which is equal totalSum - leftSum(inx).
+ *      void scale(int c) - Scale all frequencies by the specified multiplier. Beware of overflow.
  *
  * Limitations:
  *      Index zero is not supported. Do not try to read(0) or update(0, delta).
@@ -33,21 +30,13 @@ public class FenwickTree {
         tree = new int[MAX_SIZE];
     }
 
-    public int sumLeftTail(int inx) {
+    public int leftSum(int inx) {
         int sum = 0;
         while (inx > 0) {
             sum += tree[inx];
             inx -= (inx & -inx);
         }
         return sum;
-    }
-
-    public int sumRightTail(int inx) {
-        int sum = 0;
-        while (inx < MAX_SIZE) {
-            sum += tree[inx];
-            inx += (inx & -inx);
-        }
     }
 
     public void update(int inx, int delta) {
@@ -62,7 +51,7 @@ public class FenwickTree {
         return totalSum;
     }
 
-    public int readSingle(int inx) {
+    public int getSingle(int inx) {
         int sum = tree[inx]; // Sum will be decreased
         if (inx > 0) { // Special case
             int z = inx - (inx & -inx); // make z first
@@ -76,9 +65,10 @@ public class FenwickTree {
         return sum;
     }
 
-    public void scale(double c){
+    public void scale(int c) {
+        totalSum *= c;
         for (int i = 1 ; i < MAX_SIZE ; i++) {
-            tree[i] = (int) (tree[i] * c);
+            tree[i] *= c;
         }
     }
 }
