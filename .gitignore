@@ -8,3 +8,5 @@ java/.idea/modules.xml
 java/.idea/workspace.xml
 
 *.class
+
+java/.idea/uiDesigner.xml
