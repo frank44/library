@@ -51,7 +51,6 @@ public class ArrayTrieTests {
         String str = "abCDe4!<x z";
         trie.add(str);
 
-
         ArrayTrie iter = trie;
         for (int i=0; i<str.length(); i++) {
             iter = iter.moveTo(str.charAt(i));

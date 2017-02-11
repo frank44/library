@@ -14,7 +14,18 @@ package datastructures;
  *      int getWordCount(String str) - Returns the number of words in the trie that exactly match str.
  *      int size() - Return the total number of strings in the trie.
  *      ArrayTrie moveTo(char a) - Returns the child trie specified by the given character. This is useful for
- *          iterating through the tree nodes.
+ *          iterating through the tree nodes. For example:
+ *
+ *          String str = "trie_walk_example";
+ *          ArrayTrie iter = trie; // Point iter to the root of the trie
+ *          for (int i = 0; i < str.length(); i++) {
+ *              iter = iter.moveTo(str.charAt(i)); // advance to the next character
+ *              if (iter == null) break; // We've fallen off the trie
+ *
+ *              // Do stuff with iter here:
+ *              iter.getPrefixCount();
+ *              iter.getWordCount();
+ *          }
  */
 public class ArrayTrie {
     private static int ALPHABET_SIZE;
