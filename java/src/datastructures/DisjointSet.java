@@ -9,7 +9,7 @@ import java.util.*;
  * 		void merge(int key1, int key2) - Merge the set containing key1 with the set containing key2
  * 		int getRepresentative(int key) - Gets the representative of the given member. Returns -1 if key is not found.
  * 		int getSetSize(int key) - Returns the size of the set containing key.
- * 		int size() - Returns the total number of individual elements in the tree.
+ * 		int size() - Returns the total number of disjoint sets in the tree.
  * 		boolean tryAddSet(int newKey) - Tries to add a new set with the given key unless one already exists.
  * 		HashSet<Integer> getRepresentativeKeySet() - Returns a set of keys representing every disjoint set. O(1)
  */
