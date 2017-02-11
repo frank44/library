@@ -3,6 +3,9 @@ package datastructures;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
+import java.util.Scanner;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -56,5 +59,25 @@ public class ArrayTrieTests {
             assertEquals(i == str.length() - 1 ? 1 : 0, iter.getWordCount());
         }
         assertNull(iter.moveTo('Z'));
+    }
+
+    // Taken from Hackerrank problem: https://www.hackerrank.com/challenges/contacts test case #4
+    @Test
+    public void stressTest() throws Exception {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File inputFile = new File(classLoader.getResource("ArrayTrieTestdata.txt").getFile());
+        File outputFile = new File(classLoader.getResource("ArrayTrieTestOutputData.txt").getFile());
+        Scanner in = new Scanner(inputFile);
+        Scanner out = new Scanner(outputFile);
+        int n = in.nextInt();
+        for (int i = 0; i < n; i++) {
+            String op = in.next();
+            String str = in.next();
+            if (op.equals("add")) {
+                trie.add(str);
+            } else {
+                assertEquals(out.nextInt(), trie.getPrefixCount(str));
+            }
+        }
     }
 }

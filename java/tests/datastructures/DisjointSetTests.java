@@ -95,7 +95,7 @@ public class DisjointSetTests {
     @Test
     public void stressTest() throws Exception {
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("DisjointSetTestData.txt").getFile());
+        File file = new File(classLoader.getResource("ArrayTrieTestOutputData.txt").getFile());
         Scanner in = new Scanner(file);
         int N = in.nextInt();
         for (int i=0; i<N; i++) {
