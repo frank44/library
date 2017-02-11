@@ -12,6 +12,9 @@ import java.util.*;
  * 		int size() - Returns the total number of disjoint sets in the tree.
  * 		boolean tryAddSet(int newKey) - Tries to add a new set with the given key unless one already exists.
  * 		HashSet<Integer> getRepresentativeKeySet() - Returns a set of keys representing every disjoint set. O(1)
+ *
+ * 	Caveat: Using a key of -1 will lead to undefined behavior.
+ * 	TODO - fix the caveat at the expense of perf?
  */
 public class DisjointSet {
     private class TreeNode { // Helper class used to represent set elements
@@ -70,7 +73,7 @@ public class DisjointSet {
     public void merge(int key1, int key2) {
         int head1 = getRepresentative(key1);
         int head2 = getRepresentative(key2);
-        if (head1 == head2) { // No-op merge
+        if (head1 == head2 || head1 == -1 || head2 == -1) {
             return;
         }
 

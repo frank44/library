@@ -3,6 +3,8 @@ package datastructures;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
+import java.util.Scanner;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
@@ -85,5 +87,34 @@ public class DisjointSetTests {
             mDisjointSet.merge(a, i); // merge everything together
         }
         return mDisjointSet.getRepresentative(a);
+    }
+
+    // The following is a huge test case from a Hackerrank challenge that requires a DisjointSet
+    // https://www.hackerrank.com/challenges/components-in-graph
+    // Test Case #23 (answer = "2 1514")
+    @Test
+    public void stressTest() throws Exception {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource("DisjointSetTestData.txt").getFile());
+        Scanner in = new Scanner(file);
+        int N = in.nextInt();
+        for (int i=0; i<N; i++) {
+            int a = in.nextInt();
+            int b = in.nextInt();
+            mDisjointSet.tryAddSet(a);
+            mDisjointSet.tryAddSet(b);
+            mDisjointSet.merge(a, b);
+        }
+
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for (Integer k : mDisjointSet.getRepresentativeKeySet()) {
+            int size = mDisjointSet.getSetSize(k);
+            min = Math.min(min, size);
+            max = Math.max(max, size);
+        }
+
+        assertEquals(2, min);
+        assertEquals(1514, max);
     }
 }
