@@ -13,7 +13,7 @@ package datastructures;
  *      int getPrefixCount(String str) - Returns the number of strings in the trie with a certain prefix.
  *      int getWordCount(String str) - Returns the number of words in the trie that exactly match str.
  *      int size() - Return the total number of strings in the trie.
- *      SimpleTrie moveTo(char a) - Returns the child trie specified by the given character. This is useful for
+ *      ArrayTrie moveTo(char a) - Returns the child trie specified by the given character. This is useful for
  *          iterating through the tree nodes.
  */
 public class ArrayTrie {
