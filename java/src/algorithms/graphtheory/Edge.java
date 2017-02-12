@@ -22,4 +22,9 @@ public class Edge implements Comparable<Edge> {
         }
         return to - other.to;
     }
+
+    @Override
+    public String toString() {
+        return String.format("(%d,%d,%d)", from, to, weight);
+    }
 }
