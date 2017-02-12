@@ -10,3 +10,9 @@ java/.idea/workspace.xml
 *.class
 
 java/.idea/uiDesigner.xml
+.idea/library.iml
+.idea/modules.xml
+.idea/workspace.xml
+java/.idea/codeStyleSettings.xml
+*.iml
+*.xml
