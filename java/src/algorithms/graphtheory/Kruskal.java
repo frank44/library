@@ -7,7 +7,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Kruskal's algorithm for computing the minimum spanning tree (MST). Uses O(E) extra space and runs in O(Elog(E)) time.
+ * Kruskal's algorithm for computing the minimum spanning tree (MST) of a graph already in edge-set form. Uses O(E)
+ * extra space and runs in O(Elog(E)) time.
  */
 public class Kruskal {
 
