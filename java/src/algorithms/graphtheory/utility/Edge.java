@@ -1,4 +1,4 @@
-package algorithms.graphtheory;
+package algorithms.graphtheory.utility;
 
 public class Edge implements Comparable<Edge> {
     public final int from;

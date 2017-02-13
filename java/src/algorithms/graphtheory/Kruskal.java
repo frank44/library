@@ -1,5 +1,6 @@
 package algorithms.graphtheory;
 
+import algorithms.graphtheory.utility.Edge;
 import datastructures.DisjointSet;
 
 import java.util.ArrayList;

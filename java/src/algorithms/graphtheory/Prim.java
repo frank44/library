@@ -1,5 +1,9 @@
 package algorithms.graphtheory;
 
+import algorithms.graphtheory.utility.AdjacencyListGraph;
+import algorithms.graphtheory.utility.Edge;
+import algorithms.graphtheory.utility.Graph;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -9,10 +13,10 @@ import java.util.PriorityQueue;
  */
 public class Prim {
 
-    static List<Edge> prims(List<List<Edge>> graph) {
+    public static List<Edge> getMinimumSpanningTree(Graph graph) {
         PriorityQueue<Edge> pq = new PriorityQueue<>();
         pq.offer(new Edge(-1, 0, 0)); // Virtual edge to start off algorithm
-        boolean[] seen = new boolean[graph.size()];
+        boolean[] seen = new boolean[graph.getSize()];
 
         List<Edge> mst = new ArrayList<>();
         while (!pq.isEmpty()) {
@@ -25,7 +29,7 @@ public class Prim {
             if (cur.from != -1) { // Add to result set (unless it's the virtual edge)
                 mst.add(cur);
             }
-            for (Edge e : graph.get(cur.to)) {
+            for (Edge e : graph.getNeighbors(cur.to)) {
                 if (!seen[e.to]) {
                     pq.offer(e);
                 }
