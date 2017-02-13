@@ -10,7 +10,8 @@ import java.util.PriorityQueue;
 /**
  * Prim's algorithm which is used to compute the minimum spanning tree of a graph.
  * Runtime depends on the underlying Graph implementation used:
- *      AdjacencyListGraph: O(Elog(E))
+ *      AdjacencyListGraph: O(V*log(E)) (optimal)
+ *      EdgeListGraph: O(V*E)
  *
  * Returns a list of edges describing the minimum spanning tree.
  */
@@ -22,7 +23,7 @@ public class Prim {
         boolean[] seen = new boolean[graph.getSize()];
 
         List<Edge> mst = new ArrayList<>();
-        while (!pq.isEmpty()) {
+        while (!pq.isEmpty() && mst.size() + 1 < graph.getSize()) {
             Edge cur = pq.poll();
             if (seen[cur.to]) {
                 continue; // Already visited, ignore
