@@ -2,6 +2,7 @@ package algorithms.graphtheory.utility;
 
 /**
  * General graph contract for all graph related algorithms to manipulate.
+ * Note that you can remove edges but you can never removes nodes.
  */
 public interface Graph {
     int getSize();
