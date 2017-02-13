@@ -1,6 +1,5 @@
 package algorithms.graphtheory;
 
-import algorithms.graphtheory.utility.AdjacencyListGraph;
 import algorithms.graphtheory.utility.Edge;
 import algorithms.graphtheory.utility.Graph;
 
@@ -10,6 +9,10 @@ import java.util.PriorityQueue;
 
 /**
  * Prim's algorithm which is used to compute the minimum spanning tree of a graph.
+ * Runtime depends on the underlying Graph implementation used:
+ *      AdjacencyListGraph: O(Elog(E))
+ *
+ * Returns a list of edges describing the minimum spanning tree.
  */
 public class Prim {
 
