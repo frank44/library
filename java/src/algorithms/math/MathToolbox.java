@@ -1,5 +1,7 @@
 package algorithms.math;
 
+import java.math.BigInteger;
+
 /**
  * Collection of common math helper functions.
  *
@@ -93,5 +95,18 @@ public final class MathToolbox {
             b >>= 1;
         }
         return result;
+    }
+
+    public static BigInteger choose(int n, int k) {
+        if (n < 0 || k < 0 || k > n) {
+            throw new IllegalArgumentException("Invalid nCk: " + n + "C" + k);
+        }
+         k = Math.min(k, n-k);
+        BigInteger ret = BigInteger.ONE ;
+        for ( int i=n-k+1; i<=n; i++)
+            ret = ret.multiply(BigInteger.valueOf(i));
+        for ( int i=2; i<=k; i++)
+            ret = ret.divide(BigInteger.valueOf(i));
+        return ret ;
     }
 }

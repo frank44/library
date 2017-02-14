@@ -2,6 +2,8 @@ package algorithms.math;
 
 import org.junit.Test;
 
+import java.math.BigInteger;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -36,5 +38,16 @@ public class MathToolboxTests {
     public void modpowTests() {
         assertEquals(625409761L, MathToolbox.modpow(6269977260L,10287105L,1000000007L));
         assertEquals(7253, MathToolbox.modpow(30872,10287105,9997));
+    }
+
+    @Test
+    public void chooseTest() {
+        assertEquals(BigInteger.ONE, MathToolbox.choose(0,0));
+        assertEquals(BigInteger.ONE, MathToolbox.choose(1,0));
+        assertEquals(BigInteger.ONE, MathToolbox.choose(1,1));
+        assertEquals(new BigInteger("512"), MathToolbox.choose(512,1));
+        assertEquals(new BigInteger("10"), MathToolbox.choose(5, 2));
+        assertEquals(new BigInteger("324618308499160805680005"), MathToolbox.choose(208, 192));
+        assertEquals(new BigInteger("324618308499160805680005"), MathToolbox.choose(208, 208-192));
     }
 }
