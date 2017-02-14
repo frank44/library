@@ -11,6 +11,7 @@ import java.math.BigInteger;
  *      long modpow(long a, long b, long c)
  *      BigInteger choose(int n, int k): Returns nCk, the number of ways of selecting 'k' objects from 'n'. Requires k
  *                                       BigInteger multiplications and divisions.
+ *      long[][] precomputePascalsTriangle(int maxN): Returns a full Pascal triangle of the specified size.
  */
 public final class MathToolbox {
 
