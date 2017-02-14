@@ -31,4 +31,10 @@ public class MathToolboxTests {
         assertEquals(1L, MathToolbox.gcd(31L, 997L));
         assertEquals(1L, MathToolbox.gcd(2L, -3L));
     }
+
+    @Test
+    public void modpowTests() {
+        assertEquals(625409761L, MathToolbox.modpow(6269977260L,10287105L,1000000007L));
+        assertEquals(7253, MathToolbox.modpow(30872,10287105,9997));
+    }
 }

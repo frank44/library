@@ -5,6 +5,8 @@ package algorithms.math;
  *
  *      int gcd(int a, int b): Greatest common divisor. Supports both positive and negative numbers.
  *      long gcd(long a, long b)
+ *      int modpow(int a, int b, int c): Returns (a^b)(mod c)
+ *      long modpow(long a, long b, long c)
  */
 public final class MathToolbox {
 
@@ -51,5 +53,45 @@ public final class MathToolbox {
             b = c;
         }
         return sign * a;
+    }
+
+    // Assumes: c < sqrt(Integer.MAX_VALUE) or ~65,000
+    public static int modpow(int a, int b, int c) {
+        a %= c;
+        if (a == 0) {
+            if (b == 0) {
+                throw new IllegalArgumentException("Cannot compute 0^0");
+            }
+            return 0;
+        }
+        int result = 1;
+        while (b > 0) {
+            if ((b & 1) == 1) {
+                result = result * a % c;
+            }
+            a = a * a % c;
+            b >>= 1;
+        }
+        return result;
+    }
+
+    // Assumes: c < sqrt(Long.MAX_VALUE) or ~2*10^9
+    public static long modpow(long a, long b, long c) {
+        a %= c;
+        if (a == 0) {
+            if (b == 0) {
+                throw new IllegalArgumentException("Cannot compute 0^0");
+            }
+            return 0;
+        }
+        long result = 1L;
+        while (b > 0) {
+            if (b % 2 == 1) {
+                result = result * a % c;
+            }
+            a = a * a % c;
+            b >>= 1;
+        }
+        return result;
     }
 }
