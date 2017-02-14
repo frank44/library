@@ -13,7 +13,10 @@ import java.util.List;
  */
 public class Kruskal {
 
-    static List<Edge> getMST(int N, List<Edge> edgeSet) {
+    // Disallow instantiation
+    private Kruskal() {}
+
+    static List<Edge> getMinimumSpanningTree(int N, List<Edge> edgeSet) {
         if (edgeSet == null) {
             throw new NullPointerException("edgeSet is null");
         }

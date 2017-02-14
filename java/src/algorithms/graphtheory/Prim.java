@@ -17,6 +17,9 @@ import java.util.PriorityQueue;
  */
 public class Prim {
 
+    // Disallow instantiation
+    private Prim() {}
+
     public static List<Edge> getMinimumSpanningTree(Graph graph) {
         PriorityQueue<Edge> pq = new PriorityQueue<>();
         pq.offer(new Edge(-1, 0, 0)); // Virtual edge to start off algorithm
