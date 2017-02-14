@@ -118,4 +118,19 @@ public final class MathToolbox {
 
         return ret ;
     }
+
+    public static long[][] precomputePascalsTriangle(int maxN) {
+        if (maxN < 0) {
+            throw new IllegalArgumentException("Illegal N: " + maxN);
+        }
+
+        long[][] C = new long[maxN][maxN];
+        for (int i = 0; i < maxN; i++)
+        {
+            C[i][0] = 1;
+            for (int j = 1; j <= i; j++)
+                C[i][j] = C[i-1][j-1] + C[i-1][j];
+        }
+        return C;
+    }
 }

@@ -50,4 +50,16 @@ public class MathToolboxTests {
         assertEquals(new BigInteger("324618308499160805680005"), MathToolbox.choose(208, 192));
         assertEquals(new BigInteger("324618308499160805680005"), MathToolbox.choose(208, 208-192));
     }
+
+    @Test
+    public void precomputePascalsTriangleTest() {
+        long[][] C = MathToolbox.precomputePascalsTriangle(20);
+        assertEquals(1, C[0][0]);
+        assertEquals(1, C[1][0]);
+        assertEquals(1, C[1][1]);
+        assertEquals(10, C[5][2]);
+        assertEquals(70, C[8][4]);
+        assertEquals(31824, C[18][7]);
+        assertEquals(455, C[15][12]);
+    }
 }
