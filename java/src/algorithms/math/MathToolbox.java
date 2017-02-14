@@ -9,6 +9,8 @@ import java.math.BigInteger;
  *      long gcd(long a, long b)
  *      int modpow(int a, int b, int c): Returns (a^b)(mod c)
  *      long modpow(long a, long b, long c)
+ *      BigInteger choose(int n, int k): Returns nCk, the number of ways of selecting 'k' objects from 'n'. Requires k
+ *                                       BigInteger multiplications and divisions.
  */
 public final class MathToolbox {
 
@@ -101,12 +103,19 @@ public final class MathToolbox {
         if (n < 0 || k < 0 || k > n) {
             throw new IllegalArgumentException("Invalid nCk: " + n + "C" + k);
         }
-         k = Math.min(k, n-k);
-        BigInteger ret = BigInteger.ONE ;
-        for ( int i=n-k+1; i<=n; i++)
-            ret = ret.multiply(BigInteger.valueOf(i));
-        for ( int i=2; i<=k; i++)
-            ret = ret.divide(BigInteger.valueOf(i));
+        k = Math.min(k, n-k);
+
+        // Uses nCr * (n - r) / (r + 1) = nC(r+1)
+        // to incrementally compute nCr.
+        BigInteger ret = BigInteger.ONE;
+        BigInteger numerator = new BigInteger(n + "");
+        BigInteger denominator = BigInteger.ONE;
+        for (int i = 1; i <= k; i++) {
+            ret = ret.multiply(numerator).divide(denominator);
+            numerator = numerator.subtract(BigInteger.ONE);
+            denominator = denominator.add(BigInteger.ONE);
+        }
+
         return ret ;
     }
 }
