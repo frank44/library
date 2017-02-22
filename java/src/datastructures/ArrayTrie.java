@@ -6,6 +6,7 @@ package datastructures;
  *
  * Static Factory Methods
  *      createLowercaseTrie() - Memory efficient but only supports a-z.
+ *      createUppercaseTrie() - Memory efficient but only supports A-Z.
  *      createAsciiTrie() - Supports all printable ASCII characters at the cost of ~3x the memory.
  *
  * Supported Operations
@@ -47,6 +48,10 @@ public class ArrayTrie {
 
     public static ArrayTrie createLowercaseTrie() {
         return new ArrayTrie(26, 'a');
+    }
+
+    public static ArrayTrie createUppercaseTrie() {
+        return new ArrayTrie(26, 'A');
     }
 
     // Supports all printable ascii characters, values 32 - 126
@@ -97,6 +102,7 @@ public class ArrayTrie {
         return prefixCount;
     }
 
+    // TODO - think of a better name for this function
     public ArrayTrie moveTo(char a) {
         return next[a - CHAR_OFFSET];
     }
@@ -109,6 +115,7 @@ public class ArrayTrie {
         return prefixCount;
     }
 
+    // TODO - safeguard all these array accesses with bound checks
     private ArrayTrie getOrSet(char a) {
         ArrayTrie t = next[a - CHAR_OFFSET];
         if (t == null) {
