@@ -11,7 +11,8 @@ import java.math.BigInteger;
  *      long modpow(long a, long b, long c)
  *      BigInteger choose(int n, int k): Returns nCk, the number of ways of selecting 'k' objects from 'n'. Requires k
  *                                       BigInteger multiplications and divisions.
- *      long[][] precomputePascalsTriangle(int maxN): Returns a full Pascal triangle of the specified size.
+ *      long[][] precomputePascalsTriangle(int maxN): Returns a full Pascal triangle of the specified size. Beware the
+ *                                                    table will start to overflow after maxN > 52.
  */
 public final class MathToolbox {
 
@@ -120,6 +121,7 @@ public final class MathToolbox {
         return ret ;
     }
 
+    // Overflow starts occurring after maxN > 52.
     public static long[][] precomputePascalsTriangle(int maxN) {
         if (maxN < 0) {
             throw new IllegalArgumentException("Illegal N: " + maxN);
