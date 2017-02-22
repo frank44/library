@@ -13,6 +13,7 @@ import java.math.BigInteger;
  *                                       BigInteger multiplications and divisions.
  *      long[][] precomputePascalsTriangle(int maxN): Returns a full Pascal triangle of the specified size. Beware the
  *                                                    table will start to overflow after maxN > 52.
+ *      boolean isLeapYear(int year): Whether or not the specified year is a leap year
  */
 public final class MathToolbox {
 
@@ -136,4 +137,12 @@ public final class MathToolbox {
         }
         return C;
     }
+
+    // Leap years are either of the following:
+    //   * Divisible by 400
+    //   * Divisible by 4 and not divisible by 100.
+    public static boolean isLeapYear(int year) {
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    }
+
 }

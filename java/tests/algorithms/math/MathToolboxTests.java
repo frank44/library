@@ -62,4 +62,12 @@ public class MathToolboxTests {
         assertEquals(31824, C[18][7]);
         assertEquals(455, C[15][12]);
     }
+
+    @Test
+    public void isLeapYearTests() {
+        assertEquals(true, MathToolbox.isLeapYear(2016));
+        assertEquals(true, MathToolbox.isLeapYear(2000));
+        assertEquals(false, MathToolbox.isLeapYear(1900));
+        assertEquals(false, MathToolbox.isLeapYear(2017));
+    }
 }
